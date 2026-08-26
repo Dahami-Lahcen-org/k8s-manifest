@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: product-service
+  template:
+    metadata:
+      labels:
+        app: product-service
+    spec:
+      containers:
+      - name: product-service
+        image: 679209311047.dkr.ecr.us-east-1.amazonaws.com/dl-org-hub/product-service:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SPRING_DATA_MONGODB_URI
+          valueFrom:
+            configMapKeyRef:
+              name: product-service-config
+              key: SPRING_DATA_MONGODB_URI
+        - name: MANAGEMENT_ZIPKIN_TRACING_ENDPOINT
+          valueFrom:
+            configMapKeyRef:
+              name: common-config
+              key: MANAGEMENT_ZIPKIN_TRACING_ENDPOINT
+        - name: INVENTORY_SERVICE_URL
+          valueFrom:
+            configMapKeyRef:
+              name: common-config
+              key: INVENTORY_SERVICE_URL
+        - name: LOKI_URL
+          valueFrom:
+            configMapKeyRef:
+              name: common-config
+              key: LOKI_URL
