@@ -26,7 +26,7 @@ spec:
             - name: KC_HOSTNAME_STRICT
               value: "false"
             - name: KC_HOSTNAME_URL
-              value: "http://k8s-dlorg-6cc494f133-122924932.us-east-1.elb.amazonaws.com/auth"
+              value: "http://k8s-dlorg-6cc494f133-886732042.us-east-1.elb.amazonaws.com/auth"
             - name: DB_VENDOR
               valueFrom:
                 configMapKeyRef:
@@ -749,7 +749,7 @@ data:
           "alwaysDisplayInConsole": false,
           "clientAuthenticatorType": "client-secret",
           "redirectUris": [
-            "http://k8s-dlorg-6cc494f133-122924932.us-east-1.elb.amazonaws.com"
+            "http://k8s-dlorg-6cc494f133-886732042.us-east-1.elb.amazonaws.com"
           ],
           "webOrigins": [
             "*"
